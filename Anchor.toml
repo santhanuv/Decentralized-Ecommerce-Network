@@ -1,0 +1,16 @@
+[features]
+seeds = false
+skip-lint = false
+[programs.localnet]
+product = "AaaszxfE1zx7XrWzYkMy8eQoZZbujmyExX6Eup3vj2Gb"
+user = "H4Nyrs6t3GqEdM8Kfo25jHK3nYa345f5nmw5Mf5Ant6p"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "Localnet"
+wallet = "/home/san/.config/solana/id.json"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
