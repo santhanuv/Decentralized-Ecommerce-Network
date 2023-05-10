@@ -1,0 +1,37 @@
+{
+  "name": "solana-decentralized-ecommerce",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^2.5.1",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@project-serum/anchor": "^0.26.0",
+    "@solana/wallet-adapter-base": "^0.9.22",
+    "@solana/wallet-adapter-react": "^0.15.30",
+    "@solana/wallet-adapter-react-ui": "^0.9.29",
+    "@solana/wallet-adapter-wallets": "^0.19.15",
+    "@solana/web3.js": "^1.73.3",
+    "arweave": "^1.13.5",
+    "bs58": "^5.0.0",
+    "framer-motion": "^10.2.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.8.0",
+    "react-router-dom": "^6.9.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react": "^3.1.0",
+    "arlocal": "^1.1.60",
+    "typescript": "^4.9.3",
+    "vite": "^4.1.0"
+  }
+}
