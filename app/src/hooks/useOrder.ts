@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { GetProgramAccountsFilter, PublicKey } from "@solana/web3.js";
+import { GetProgramAccountsFilter, Keypair, PublicKey } from "@solana/web3.js";
 import { OrderFetchSchema, OrderSchema } from "../schema/OrderSchema";
 import { Idl, Program } from "@project-serum/anchor";
 import useProduct from "./useProduct";
@@ -189,6 +189,63 @@ const useOrder = () => {
     []
   );
 
+  const fetchConfirmedSellerOrders = useCallback(
+    async (
+      orderProgram: Program<Idl>,
+      productProgram: Program<Idl>,
+      userProgram: Program<Idl>,
+      publicKey: PublicKey,
+      userType: UserType,
+      getTransactionData: (txId: string) => Promise<any>
+    ) => {
+      if (!orderProgram.account.order) throw new Error("Invalid order program");
+
+      const data = await fetchAllOrders(
+        orderProgram,
+        productProgram,
+        userProgram,
+        getTransactionData,
+        [
+          userType === UserType.Buyer
+            ? {
+                memcmp: {
+                  offset: 8 + 32, // product Key
+                  bytes: publicKey.toBase58(),
+                },
+              }
+            : {
+                memcmp: {
+                  offset:
+                    8 + // Discriminator
+                    32 + // Product key
+                    32, // Buyer key
+                  bytes: publicKey.toBase58(),
+                },
+              },
+          {
+            memcmp: {
+              // Discriminator + product key + buyer key + seller key + address key
+              // + is_accepted
+              offset: 8 + 32 + 32 + 32 + 32 + 1,
+              bytes: bs58.encode([1]),
+            },
+          },
+          {
+            memcmp: {
+              // Discriminator + product key + buyer key + seller key + address key
+              // + is_accepted
+              offset: 8 + 32 + 32 + 32 + 32 + 1 + 1,
+              bytes: bs58.encode([0]),
+            },
+          },
+        ]
+      );
+
+      return data;
+    },
+    []
+  );
+
   const fetchCompletedSellerOrders = useCallback(
     async (
       orderProgram: Program<Idl>,
@@ -224,15 +281,8 @@ const useOrder = () => {
               },
           {
             memcmp: {
-              // Discriminator + product key + buyer key + seller key
-              offset: 8 + 32 + 32 + 32,
-              bytes: bs58.encode([1]),
-            },
-          },
-          {
-            memcmp: {
-              // Discriminator + product key + buyer key + seller key
-              offset: 8 + 32 + 32 + 32 + 1,
+              // Discriminator + product key + buyer key + seller key + address key + is_accepted + is_confirmed
+              offset: 8 + 32 + 32 + 32 + 32 + 1 + 1,
               bytes: bs58.encode([1]),
             },
           },
@@ -281,6 +331,7 @@ const useOrder = () => {
     fetchAllOrders,
     fetchPendingSellerOrders,
     fetchAcceptedSellerOrders,
+    fetchConfirmedSellerOrders,
     fetchCompletedSellerOrders,
     placeOrder,
   };

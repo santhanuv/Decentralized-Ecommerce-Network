@@ -23,6 +23,7 @@ const SellerProfile = () => {
 
       if (value === "0") setFilterOption(OrderFilter.Pending);
       else if (value == "1") setFilterOption(OrderFilter.Accepted);
+      else if (value == "2") setFilterOption(OrderFilter.Confirmed);
       else setFilterOption(OrderFilter.Completed);
     },
     []
@@ -45,10 +46,13 @@ const SellerProfile = () => {
       </TabList>
       <TabPanels>
         <TabPanel>
-          <Select onChange={(e) => handleFilterChange(e)}>
-            <option value={0}>Pending</option>
-            <option value={1}>Accepted</option>
-            <option value={2}>Completed</option>
+          <Select onChange={(e) => handleFilterChange(e)}
+            bg="gray.800"
+          >
+            <option value={0} style={{ background: "#1e2021" }}>Pending</option>
+            <option value={1} style={{ background: "#1e2021" }}>Accepted</option>
+            <option value={2} style={{ background: "#1e2021" }}>Confirmed</option>
+            <option value={3} style={{ background: "#1e2021" }}>Completed</option>
           </Select>
           <OrderList type={UserType.Seller} orderFilter={filterOption} />
         </TabPanel>

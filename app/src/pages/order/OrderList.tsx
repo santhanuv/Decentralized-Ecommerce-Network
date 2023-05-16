@@ -16,6 +16,7 @@ export enum UserType {
 export enum OrderFilter {
   Pending,
   Accepted,
+  Confirmed,
   Completed,
 }
 
@@ -36,6 +37,7 @@ const OrderList = ({
   const {
     fetchPendingSellerOrders,
     fetchAcceptedSellerOrders,
+    fetchConfirmedSellerOrders,
     fetchCompletedSellerOrders,
   } = useOrder();
   const { getTransactionData } = useArweave();
@@ -68,6 +70,15 @@ const OrderList = ({
           type,
           getTransactionData
         );
+      } else if (orderFilter === OrderFilter.Confirmed) {
+        data = await fetchConfirmedSellerOrders(
+          programs.orderProgram,
+          programs.productProgram,
+          programs.userProgram,
+          publicKey,
+          type,
+          getTransactionData
+        )
       } else {
         data = await fetchCompletedSellerOrders(
           programs.orderProgram,
@@ -83,7 +94,7 @@ const OrderList = ({
     } catch (err) {
       console.log(`ERROR: Unable to fetch data\n${err}`);
     }
-  }, [programs, getTransactionData, setOrders, orderFilter]);
+  }, [programs, getTransactionData, setOrders, orderFilter, type, publicKey]);
 
   useEffect(() => {
     fetch();

@@ -14,6 +14,7 @@ import EditProduct from "../pages/products/EditProduct";
 import UpdateMarket from "../pages/market/UpdateMarket";
 import TestPage from "../pages/TestPage";
 import MyAccount from "../pages/user/MyAccount";
+import CartPage from "../pages/user/CartPage";
 
 const routes = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const routes = createBrowserRouter([
           {
             path: "/myaccount",
             element: <MyAccount />,
+          },
+          {
+            path: "/carts",
+            element: <CartPage />,
           },
           {
             path: "profile/seller",

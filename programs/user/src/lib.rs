@@ -1,6 +1,6 @@
 use anchor_lang::prelude::*;
 
-declare_id!("H4Nyrs6t3GqEdM8Kfo25jHK3nYa345f5nmw5Mf5Ant6p");
+declare_id!("823R7CVZCpjvT4YMZ84FgbfdeQsWYgZFNnqSpwXPAtcJ");
 
 pub mod errors;
 pub mod instructions;
@@ -8,6 +8,8 @@ pub mod state;
 
 use state::user::UserProfile;
 use state::address::UserAddress;
+use state::cart::Cart;
+use product::state::product::Product;
 
 #[program]
 pub mod user {
@@ -92,6 +94,34 @@ pub mod user {
         Ok(())
     }
 
+    pub fn add_to_cart(
+        ctx: Context<AddToCart>,
+        quantity: u32,
+    ) -> Result<()> {
+        let product = ctx.accounts.product.key();
+        let user = ctx.accounts.user.key();
+        let bump = ctx.bumps.get("cart").unwrap();
+
+        let product_cart = Cart::new(
+            product,
+            user,
+            quantity,
+            *bump,
+        );
+
+        ctx.accounts.cart.set_inner(product_cart);
+
+        Ok(())
+    }
+
+    pub fn remove_from_cart(
+        ctx:Context<RemoveFromCart>
+    ) -> Result<()> {
+        msg!("Removing cart {}", ctx.accounts.cart.key());
+
+        Ok(())
+    }
+
 }
 
 
@@ -158,5 +188,33 @@ pub struct CreateAddress<'info> {
     pub address_account: Account<'info, UserAddress>,
     #[account(mut)]
     pub auth_account: Signer<'info>,
+    pub system_program: Program<'info, System>,
+}
+
+#[derive(Accounts)]
+#[instruction(
+    quantity: u32
+)]
+pub struct AddToCart<'info> {
+    #[account(
+        init,
+        seeds = [b"cart", user.key().as_ref(), product.key().as_ref()],
+        bump,
+        payer = user,
+        space = Cart::SPACE
+    )]
+    pub cart: Account<'info, Cart>,
+    pub product: Account<'info, Product>,
+    #[account(mut)]
+    pub user: Signer<'info>,
+    pub system_program: Program<'info, System>,
+}
+
+#[derive(Accounts)]
+pub struct RemoveFromCart<'info> {
+    #[account(mut, close = user)]
+    pub cart: Account<'info, Cart>,
+    #[account(mut)]
+    pub user: Signer<'info>,
     pub system_program: Program<'info, System>,
 }

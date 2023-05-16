@@ -9,7 +9,7 @@ user = "H4Nyrs6t3GqEdM8Kfo25jHK3nYa345f5nmw5Mf5Ant6p"
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "Localnet"
+cluster = "localnet"
 wallet = "/home/san/.config/solana/id.json"
 
 [scripts]

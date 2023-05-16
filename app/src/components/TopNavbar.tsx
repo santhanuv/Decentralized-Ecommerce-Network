@@ -5,6 +5,7 @@ import NavLink from "./NavLink";
 import SearchBar from "./SearchBar";
 import WalletButton from "./wallet/WalletButton";
 import UserMenu from "./UserMenu";
+import { Link } from "react-router-dom";
 
 const TopNavbar = () => {
   return (
@@ -25,7 +26,9 @@ const TopNavbar = () => {
           <Spacer />
           <Flex gap="5" {...commonFlexStyles}>
             <UserMenu />
-            {/* <IconButton as={FaShoppingCart} /> */}
+            <Link to="/carts">
+              <IconButton as={FaShoppingCart}  />
+            </Link>
             <WalletButton />
           </Flex>
         </Flex>

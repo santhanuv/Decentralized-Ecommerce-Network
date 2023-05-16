@@ -37,7 +37,6 @@ const Buy = () => {
           })
         )) as ProductFetchSchema;
 
-        console.log(data);
         setProducts(data);
       }
     } catch (err) {
@@ -57,6 +56,8 @@ const Buy = () => {
           return (
             <ProductCard
               key={product.publicKey.toString()}
+              id={product.publicKey}
+              inventory={product.account.inventory}
               image={product?.images && product?.images[0]}
               title={product.account.title}
               description={product.account.description}
