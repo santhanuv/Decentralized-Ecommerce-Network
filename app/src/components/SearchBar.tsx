@@ -1,13 +1,29 @@
 import { Input, InputGroup, InputLeftElement, Icon } from "@chakra-ui/react";
 import { FaSearch } from "react-icons/fa";
+import useSearch from "../hooks/useSearch";
+import { useCallback } from "react";
 
 const SearchBar = () => {
+  const { searchWord, setSearchWord } = useSearch();
+
+  const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.currentTarget.value;
+
+    setSearchWord(value);
+  }, [])
+
   return (
     <InputGroup>
       <InputLeftElement pointerEvents="none">
         <Icon as={FaSearch} color="grey" />
       </InputLeftElement>
-      <Input type="search" placeholder="Search" {...inputStyleProps} />
+      <Input 
+        value={searchWord}
+        onChange={onChange}
+        type="search" 
+        placeholder="Search" 
+        {...inputStyleProps} 
+      />
     </InputGroup>
   );
 };

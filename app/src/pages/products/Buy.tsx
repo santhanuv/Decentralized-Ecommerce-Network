@@ -1,24 +1,32 @@
-import { useCallback, useEffect, useState } from "react";
-import { ProductSchema } from "../../schema/ProductSchema";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import ProductCard from "../../components/ProductCard";
 import useAnchor from "../../hooks/useAnchor";
-import { PublicKey } from "@solana/web3.js";
-import { cookieStorageManager, Flex, Heading } from "@chakra-ui/react";
-import SideBarLayout from "../../components/layout/SideBarLayout";
-import Filter from "../../components/Filter";
+import { Flex, Heading } from "@chakra-ui/react";
 import useArweave from "../../hooks/useArweave";
 import { ProductFetchSchema } from "../../schema/ProductSchema";
+import * as bs58 from "bs58";
+import useSearch from "../../hooks/useSearch";
 
 const Buy = () => {
   const { programs } = useAnchor();
   const [products, setProducts] = useState<ProductFetchSchema | []>([]);
   const { getTransactionData } = useArweave();
+  const { searchWord } = useSearch();
+
+  const productFilterOffset = useMemo(() => 8 + 32 + 32 + 8 + 8 + 8 + 4 + 4, []);
 
   const getProduct = useCallback(async () => {
     try {
       if (programs?.productProgram) {
         const products =
-          (await programs.productProgram.account.product.all()) as unknown as ProductFetchSchema;
+          (await programs.productProgram.account.product.all( /*searchWord ?*/ [
+            {
+              memcmp: {
+                offset: productFilterOffset,
+                bytes: bs58.encode(Buffer.from(searchWord))
+              }
+            }
+          ] /*: []*/)) as unknown as ProductFetchSchema;
 
         // Convert the unixtimestamp to string for easy conversion of timestamp to date
         /* -- code here -- */
@@ -42,11 +50,11 @@ const Buy = () => {
     } catch (err) {
       console.error(`Error: Unable to get products\n${err}`);
     }
-  }, [programs, getTransactionData, setProducts]);
+  }, [programs, getTransactionData, setProducts, searchWord]);
 
   useEffect(() => {
     getProduct();
-  }, []);
+  }, [searchWord]);
 
   return (
     // <SideBarLayout SideBar={Filter}>

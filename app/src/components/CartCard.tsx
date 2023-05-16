@@ -155,7 +155,7 @@ const CartCard = ({ cart }: { cart: Cart}) => {
                     />
                 </Box>
                 <VStack alignItems="flex-start" padding="16px">
-                    <Heading size="mg">{cart.product.title}</Heading>
+                    <Heading size="md" textTransform="capitalize">{cart.product.title}</Heading>
                     <Text>Quantity: {cart.quantity}</Text>
                     <Text>Price: {cart.getTotalPriceInSOL()} SOL</Text>
                     <Spacer />

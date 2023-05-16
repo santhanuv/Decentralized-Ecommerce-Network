@@ -1,5 +1,4 @@
 import { Avatar, Box, Flex, Text } from "@chakra-ui/react";
-import React from "react";
 import { UserSchema } from "../schema/UserSchema";
 
 const InfoCard = ({

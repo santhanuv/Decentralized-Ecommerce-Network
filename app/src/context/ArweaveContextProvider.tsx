@@ -29,7 +29,7 @@ const ArweaveContextProvider = ({ children }: { children: ReactNode }) => {
       setWalletAddr(walletAddr);
 
       // See arlocal github page
-      const WINSTON = 1000000000000;
+      // const WINSTON = 1000000000000;
       await arweave.api.get(`/mint/${walletAddr}/${100000 * 10000000000}`);
 
       const balance = await arweave.wallets.getBalance(walletAddr);

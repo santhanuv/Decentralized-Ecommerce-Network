@@ -5,7 +5,6 @@ import OrderCard from "../../components/OrderCard";
 import useAnchor from "../../hooks/useAnchor";
 import useArweave from "../../hooks/useArweave";
 import useOrder from "../../hooks/useOrder";
-import useProduct from "../../hooks/useProduct";
 import { OrderFetchSchema } from "../../schema/OrderSchema";
 
 export enum UserType {

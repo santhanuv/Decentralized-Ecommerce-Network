@@ -22,7 +22,7 @@ const IconButtonStyleProps = {
 };
 
 type IconButtonProps = {
-  as: As<any>;
+  as: As;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   isLoading?: boolean;
 };

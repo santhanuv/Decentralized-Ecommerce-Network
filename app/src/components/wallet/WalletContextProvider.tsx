@@ -14,6 +14,7 @@ const WalletContextProvider = ({ children }: WalletContextProviderProps) => {
   const network = WalletAdapterNetwork.Testnet;
 
   const endpoint = useMemo(() => clusterApiUrl(network), [network]);
+  const localHost = "http://127.0.0.1:8899";
 
   const wallets = useMemo(
     () => [new PhantomWalletAdapter(), new SolflareWalletAdapter()],
@@ -21,7 +22,7 @@ const WalletContextProvider = ({ children }: WalletContextProviderProps) => {
   );
 
   return (
-    <ConnectionProvider endpoint={"http://127.0.0.1:8899"}>
+    <ConnectionProvider endpoint={localHost}>
       <WalletProvider wallets={wallets}>{children}</WalletProvider>
     </ConnectionProvider>
   );

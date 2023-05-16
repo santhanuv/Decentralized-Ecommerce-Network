@@ -1,9 +1,5 @@
-import { Keypair, PublicKey } from "@solana/web3.js";
 import React, { useCallback, useState } from "react";
 import { AddressInputSchema } from "../../schema/UserSchema";
-import { utils as anchorUtils } from "@coral-xyz/anchor";
-import { useWallet } from "@solana/wallet-adapter-react";
-import useAnchor from "../../hooks/useAnchor";
 import {
   Box,
   Button,
@@ -12,13 +8,9 @@ import {
   FormLabel,
   Heading,
   Input,
-  Text,
   Textarea,
-  useToast,
   VStack,
 } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
-import useUser from "../../hooks/useUser";
 
 const initialAddress: AddressInputSchema = {
   country: "",

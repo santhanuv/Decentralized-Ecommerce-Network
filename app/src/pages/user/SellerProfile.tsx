@@ -8,13 +8,10 @@ import {
   TabPanel,
   Select,
 } from "@chakra-ui/react";
-import UpdateProfile from "./UpdateProfile";
 import Market from "../market/Market";
 import OrderList, { OrderFilter, UserType } from "../order/OrderList";
-import { useUserContext, UserContext } from "../../context/UserContextProvider";
 
 const SellerProfile = () => {
-  const { userData, profileImage, reload, balance } = useUserContext();
   const [filterOption, setFilterOption] = useState(OrderFilter.Pending);
 
   const handleFilterChange = useCallback(

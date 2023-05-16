@@ -15,17 +15,15 @@ import {
 } from "@chakra-ui/react";
 import { FaPlus } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
-  MarketFetchSchema,
   MarketInputSchema,
 } from "../../schema/MarketSchema";
 import ProgressBar from "../../components/ProgressBar";
-import ImagePreview from "../../components/ImagePreview";
 import useArweave from "../../hooks/useArweave";
 import { useWallet } from "@solana/wallet-adapter-react";
 import useAnchor from "../../hooks/useAnchor";
-import { Keypair, PublicKey } from "@solana/web3.js";
+import { PublicKey } from "@solana/web3.js";
 
 const initMarketData: MarketInputSchema = {
   name: "",

@@ -1,5 +1,4 @@
 import { PublicKey } from "@solana/web3.js";
-import { ProductSchema } from "./ProductSchema";
 
 export type CancelOrderType = {
   buyer?: {},

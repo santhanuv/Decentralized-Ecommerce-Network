@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import useCart from '../../hooks/useCart'
 import useAnchor from '../../hooks/useAnchor';
 import { useWallet } from "@solana/wallet-adapter-react";

@@ -12,7 +12,6 @@ import CreateMarket from "../pages/market/CreateMarket";
 import MarketDetails from "../pages/market/MarketDetails";
 import EditProduct from "../pages/products/EditProduct";
 import UpdateMarket from "../pages/market/UpdateMarket";
-import TestPage from "../pages/TestPage";
 import MyAccount from "../pages/user/MyAccount";
 import CartPage from "../pages/user/CartPage";
 
@@ -25,10 +24,6 @@ const routes = createBrowserRouter([
       {
         index: true,
         element: <Home />,
-      },
-      {
-        path: "test",
-        element: <TestPage />,
       },
       {
         path: "buy",

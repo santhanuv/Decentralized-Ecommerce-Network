@@ -193,10 +193,12 @@ const MarketDetails = () => {
             return (
               <ProductCard
                 key={product.publicKey.toString()}
+                id={product.publicKey}
                 image={product?.images && product?.images[0]}
                 title={product.account.title}
                 description={product.account.description}
                 price={product.account.price}
+                inventory={product.account.inventory}
                 rating={product.account.rating}
                 pubKey={product.publicKey}
                 toLink={`/market/${marketID}/product/${product.publicKey.toString()}`}

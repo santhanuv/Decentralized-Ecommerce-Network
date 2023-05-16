@@ -10,7 +10,7 @@ type ContextType = {
 };
 
 const useArweave = () => {
-  const { arweave, wallet, walletAddr } = useContext(
+  const { arweave, wallet } = useContext(
     ArweaveContext
   ) as ContextType;
 
@@ -47,11 +47,6 @@ const useArweave = () => {
         }
 
         return tx.id;
-        // if (res.status === 200) {
-        //   return tx.id;
-        // } else {
-        //   throw Error("Unable to submit transaction");
-        // }
       } catch (err) {
         console.error(err);
       }

@@ -15,12 +15,10 @@ import useUser from "../../hooks/useUser";
 import useArweave from "../../hooks/useArweave";
 import { UserInputSchema } from "../../schema/UserSchema";
 import { useNavigate } from "react-router-dom";
-import { PublicKey } from "@solana/web3.js";
-import { utils } from "@coral-xyz/anchor";
 import { AddressCard } from "../../components/AddressCard";
 
 const MyAccount = () => {
-  const [progressPercent, setProgressPercent] = useState<number>(0);
+  const [_, setProgressPercent] = useState<number>(0);
   const [oldData, setOldData] = useState<UserInputSchema | undefined>();
   const [oldProfileImage, setOldProfileImage] = useState<string | undefined>();
   const { programs } = useAnchor();

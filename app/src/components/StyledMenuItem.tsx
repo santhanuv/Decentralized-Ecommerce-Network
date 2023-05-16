@@ -30,7 +30,7 @@ type StyledMenuItemPropsType = {
   children: ReactNode;
   addBorder?: boolean;
   onClick?: () => void;
-  as?: As<any>;
+  as?: As;
 };
 
 export default StyledMenuItem;

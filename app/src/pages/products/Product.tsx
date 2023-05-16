@@ -21,9 +21,7 @@ import {
   useToast,
   useDisclosure,
 } from "@chakra-ui/react";
-import { utils as anchorUtils } from "@coral-xyz/anchor";
 import React, { useCallback, useEffect, useState } from "react";
-import { FaRegHeart, FaShoppingCart } from "react-icons/fa";
 import useAnchor from "../../hooks/useAnchor";
 import { useParams } from "react-router-dom";
 import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
@@ -41,13 +39,6 @@ import { AddressCard } from "../../components/AddressCard";
 import useOrder from "../../hooks/useOrder";
 import useUser from "../../hooks/useUser";
 import InfoCard from "../../components/InfoCard";
-
-const initialAddress: AddressInputSchema = {
-  country: "",
-  state: "",
-  code: "",
-  locale: "",
-};
 
 const Product = () => {
   const { programs } = useAnchor();

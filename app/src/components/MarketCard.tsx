@@ -1,14 +1,11 @@
 import {
-  Button,
   Card,
   CardBody,
   Heading,
   Image,
   Stack,
-  Text,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { MarketSchema } from "../schema/MarketSchema";
 
 type MarketCard = {
   name: string;

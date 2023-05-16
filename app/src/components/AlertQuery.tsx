@@ -7,7 +7,6 @@ import {
   AlertDialogHeader,
   AlertDialogOverlay,
   Button,
-  useDisclosure,
 } from "@chakra-ui/react";
 
 function AlertQuery({

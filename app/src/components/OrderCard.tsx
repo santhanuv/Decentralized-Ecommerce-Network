@@ -30,7 +30,6 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import { CancelOrder, CancelOrderEnum, OrderAcceptInputSchema, OrderSchema } from "../schema/OrderSchema";
 import { BN } from "@project-serum/anchor";
 import { OrderFilter, UserType } from "../pages/order/OrderList";
-import { utils } from "@coral-xyz/anchor";
 
 const initData: OrderAcceptInputSchema = {
   expectedDelivery: "",
@@ -596,7 +595,7 @@ const OrderCard = ({
 
         <Stack>
           <CardBody>
-            <Heading size="md">
+            <Heading size="md" textTransform="capitalize">
               {order.productData?.title
                 ? order.productData.title
                 : "Unknown Title"}
@@ -633,17 +632,7 @@ const OrderCard = ({
           </CardBody>
 
           <CardFooter gap="24px">
-            {/* {!order.isAccepted && type === UserType.Seller ? (
-              <Button variant="solid" colorScheme="green" onClick={onOpen}>
-                {okBtnTxt ? okBtnTxt : "Accept"}
-              </Button>
-            ) : null} */}
-            {/* {getAcceptButtons(type, orderFilter)}
-            {getRejectButtons(type, orderFilter)} */}
             {...getButtons()}
-            {/* <Button variant="solid" colorScheme="red">
-              {cancelBtnTxt ? cancelBtnTxt : "Reject"}
-            </Button> */}
           </CardFooter>
         </Stack>
       </Card>

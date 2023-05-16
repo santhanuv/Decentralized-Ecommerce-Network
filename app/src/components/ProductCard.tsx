@@ -14,13 +14,11 @@ import {
   ModalContent,
   ModalBody,
   FormControl,
-  Input,
   FormLabel,
   Modal,
   ModalOverlay,
   ModalHeader,
   ModalCloseButton,
-  Textarea,
   NumberInputField,
   NumberDecrementStepper,
   NumberIncrementStepper,
@@ -191,7 +189,7 @@ const ProductCard = ({
           </Flex>
           <Flex flexDirection="column" gap="2" height="150px" marginTop="8px">
             <Text fontSize="sm">{rating ? rating : "Rating"}</Text>
-            <Heading size="sm">{title}</Heading>
+            <Heading size="sm" textTransform="capitalize">{title}</Heading>
             <Text fontSize="sm">
               {description.length > PRODUCT_DESCRIPTION_MAX_LEN
                 ? `${description.slice(0, PRODUCT_DESCRIPTION_MAX_LEN)}...`

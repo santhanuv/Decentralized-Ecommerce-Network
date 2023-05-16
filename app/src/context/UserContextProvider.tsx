@@ -12,7 +12,6 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
 import useAnchor from "../hooks/useAnchor";
 import useArweave from "../hooks/useArweave";
-import { Idl, Program } from "@project-serum/anchor";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 

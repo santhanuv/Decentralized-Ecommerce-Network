@@ -2,7 +2,6 @@ import coverImg from "../../assets/cover-image-home.svg";
 import {
   Box,
   Flex,
-  Container,
   Image,
   Heading,
   Text,
@@ -28,10 +27,10 @@ const Home = () => {
               centralized party in between.
             </Text>
             <Flex marginTop="40px" gap="32px" w="100%">
-              <Button as={Link} to="#" colorScheme="blue" width="150px">
+              <Button as={Link} to="/profile/seller" colorScheme="blue" width="150px">
                 Sell
               </Button>
-              <Button as={Link} to="#" colorScheme="blue" width="150px">
+              <Button as={Link} to="/profile/buyer" colorScheme="blue" width="150px">
                 Buy
               </Button>
             </Flex>

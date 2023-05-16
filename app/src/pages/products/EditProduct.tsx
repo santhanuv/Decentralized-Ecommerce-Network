@@ -25,6 +25,7 @@ import ProgressBar from "../../components/ProgressBar";
 import { useNavigate, useParams } from "react-router-dom";
 import { AnchorPrograms } from "../../context/AnchorContextProvider";
 import useProduct from "../../hooks/useProduct";
+import { BN } from "@project-serum/anchor";
 
 const initialData: ProductInputSchema = {
   price: "",
@@ -196,11 +197,15 @@ const EditProduct = () => {
 
         const productKey = new PublicKey(productID);
 
+        const priceInLamports = new BN(
+          Math.round(Number.parseFloat(data.price) * LAMPORTS_PER_SOL)
+        );
+
         const result = await programs?.productProgram?.methods
           .updateProduct(
-            data.price,
+            priceInLamports,
             data.inventory,
-            data.title,
+            data.title.toLowerCase(),
             data.description,
             txid
           )

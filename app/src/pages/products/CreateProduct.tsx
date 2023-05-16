@@ -164,7 +164,7 @@ const CreateProduct = () => {
             priceInLamports,
             0,
             data.inventory,
-            data.title,
+            data.title.toLowerCase(),
             data.description,
             img_txid
           )

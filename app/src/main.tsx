@@ -8,6 +8,7 @@ import { theme } from "./theme/chakraui";
 import WalletContextProvider from "./components/wallet/WalletContextProvider";
 import { AnchorContextProvider } from "./context/AnchorContextProvider";
 import { ArweaveContextProvider } from "./context/ArweaveContextProvider";
+import { SearchContextProvider } from "./context/SearchContextProvider";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
@@ -15,7 +16,9 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <WalletContextProvider>
         <AnchorContextProvider>
           <ArweaveContextProvider>
-            <RouterProvider router={routes} />
+            <SearchContextProvider>
+              <RouterProvider router={routes} />
+            </SearchContextProvider>
           </ArweaveContextProvider>
         </AnchorContextProvider>
       </WalletContextProvider>

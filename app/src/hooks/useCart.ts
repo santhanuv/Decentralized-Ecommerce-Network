@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useCallback } from "react";
 import { Cart, CartFetch } from "../schema/CartSchema";
 import { Idl, Program } from "@project-serum/anchor";
 import { PublicKey } from "@solana/web3.js";
@@ -6,7 +6,6 @@ import { utils } from "@coral-xyz/anchor";
 import useProduct from "./useProduct";
 
 const useCart = () => {
-    const [userCarts, setUserCarts] = useState<Cart[]>([]);
     const { fetchProduct } = useProduct();
 
     const fetchUserCart = useCallback(async (
