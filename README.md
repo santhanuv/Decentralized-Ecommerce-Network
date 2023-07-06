@@ -52,7 +52,7 @@ Blockchain: Solana + Anchor Framework + Rust
    ```
    anchor build
    ```
-   Update the Program ID of each program. To get the updated program id, run the command:
+   Update the Program ID of each program in the source code. To get the updated program id, run the command:
    ```
    anchor keys list
    ```
