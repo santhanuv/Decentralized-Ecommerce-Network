@@ -17,15 +17,12 @@ marketplace faces are they are based upon Ethereum blockchain technology. That i
 consumes a lot of gas fees. Because Ethereum block time and block size is large thereby
 the number of transactions is low.
 
-Digital asset marketplaces or DAM provide a complete framework for their users for
+Decentralized Ecommerce Network or DEN provide a complete framework for their users for
 buying and selling their project. Since its beginning in 2009, the market for digital assets
 has changed. Following its rapid expansion in 2016–18, there were major downward
-corrections in 2018–19. DAM acts as a trusted intermediary between issuers and
+corrections in 2018–19. DEN acts as a trusted intermediary between issuers and
 investors of digital assets. They propose a set of tools and services to facilitate
-transactions between the different users. To build this kind of application you would
-require some Ethereum smart contracts written in the solidity programming language.
-You would require a web application and web3.js library to turn this web application into
-a blockchain website. While building DAM in Ethereum it would cost more in terms of
+transactions between the different users. While building it in Ethereum, it would cost more in terms of
 gas fees but we can reduce this by using Solana blockchain because it uses a new type of
 technology called PROOF OF HISTORY. It would increase the number of transactions
 and decrease the block time.
