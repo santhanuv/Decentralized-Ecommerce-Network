@@ -32,7 +32,7 @@ and decrease the block time.
 
 ## Technologies
 
-Frontend: React + Chakra UI + Vite
+Frontend: React + Typescript + Chakra UI + Vite
 Decentralized Storage: Arweave
 Blockchain: Solana + Anchor Framework + Rust
 
