@@ -37,31 +37,37 @@ Blockchain: Solana + Anchor Framework + Rust
 
 1. Install solana tool suite, solana-test-validator, rust, anchor (refer docs).
 2. Use solana locally:
+
    ```
    solana config set --url localhost
    ```
-3. Run a local ledger:
+4. Run a local ledger:
+
    ```
    solana-test-validator
    ```
-4. Clone the repo and change directory to it.
-5. Build the program:
+6. Clone the repo and change directory to it.
+7. Build the program:
+
    ```
    anchor build
    ```
    Update the Program ID of each program in the source code. To get the updated program id, run the command:
+
    ```
    anchor keys list
    ```
-6. Deploy the program:
+9. Deploy the program:
+
    ```
    anchor deploy
    ```
-7. Run local arweave instance:
+11. Run local arweave instance:
+   
    ```
    npx arlocal
    ```
-8. Run react locally (or build):
+11. Run react locally (or build):
    ```
    cd app
    npm run dev
