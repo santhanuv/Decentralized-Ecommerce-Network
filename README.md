@@ -41,13 +41,13 @@ Blockchain: Solana + Anchor Framework + Rust
    ```
    solana config set --url localhost
    ```
-4. Run a local ledger:
+3. Run a local ledger:
 
    ```
    solana-test-validator
    ```
-6. Clone the repo and change directory to it.
-7. Build the program:
+4. Clone the repo and change directory to it.
+5. Build the program:
 
    ```
    anchor build
@@ -57,17 +57,17 @@ Blockchain: Solana + Anchor Framework + Rust
    ```
    anchor keys list
    ```
-9. Deploy the program:
+6. Deploy the program:
 
    ```
    anchor deploy
    ```
-11. Run local arweave instance:
+7. Run local arweave instance:
    
    ```
    npx arlocal
    ```
-11. Run react locally (or build):
+8. Run react locally (or build):
    ```
    cd app
    npm run dev
